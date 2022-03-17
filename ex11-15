@@ -1,0 +1,442 @@
+PART-B
+EX NO: 11	
+SENDING REQUEST TO JSP
+AIM:
+
+	To collect the definitions of 5 items in open source. These definition are stored in two string arrays name [] and defn[]. Write a jsp which has these two arrays and supplies the definition on request. Write a HTML document which gets the user input of the name of the item and sends the request to the jsp.
+
+PROCEDURE:
+
+1.	Click the start button and select the program --accessories    --    notepad
+2.	Create an html file called main.html using necessary html tag.
+3.	Create a form using necessary tags.
+4.	Create a textbox , submit button and a label.
+5.	Create another jsp file using necessary tags.
+6.	Set the initial values and set the required types.
+7.	create  an array  name[] and assign all definition terms.
+8.	Check the name of definition with user entered term using if statement.
+9.	If match display the definition.
+10.	Save the file using .jsp extention in  C:\Program Files\ApacheSoftwareFoundation\tomcat 
+5.0\webapps\Root\user directory\    .jsp 
+11.	Open internet explorer and in address bar type http:// localhost : 8080/user directory/filename  to Execute the program.
+12.	Print the output.
+13.	Stop.
+
+PROGRAM
+Main.html
+<html>
+<head>
+<title>OPEN SOURCE</title>
+</head>
+<BODY>
+<form  id="form1" name="form1" method="post" action="valdef.jsp">
+<h2>some definitions  in OPEN SOURCE</h2>
+<hr><br>Enter an open source term here:
+<input name="t1" type="text" id="t1"/><br>
+<input type ="submit" name="submit" value="submit"/ >
+</form>
+</body>
+</html>
+Valdef.jsp
+<% String name=request.getParameter("t1");
+String def;
+if(name.equals("LINUX"))
+{
+def="LINUX IS A FREE OS";
+}
+else if(name.equals("PHP"))
+{
+def="HYPERTEXT PRE PROCESSOR";
+}
+else if(name.equals("PYTHON"))
+{
+def="SCRIPTING LANGUAGE";
+}
+else if(name.equals("C"))
+{
+def="PROGRAMMING LANGUAGE";
+}
+else if(name.equals("PERL"))
+{
+def="SCRIPTING LANGUAGE";
+}
+else
+{
+def="Enter an open source term";
+}
+out.println(def); %>
+
+
+
+OUTPUT
+
+
+ 
+
+
+
+
+
+
+RESULT
+
+	Thus the program is executed and output is verified.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+EX.NO.12       
+MANIPULATE COOKIES
+
+AIM:
+
+	To write a JSP code to manipulate cookies.
+
+PROCEDURE:
+
+1.	Click the start button and select the program --accessories    --    notepad
+2.	Create a jsp document cookieform.jsp with the necessary tags.
+3.	Create a form and set the method as post and action as setcookie.jsp.
+4.	Create a text box and label as “enter your name”
+5.	Create a submit button.
+6.	To create setcookie.jsp document ,include language as java.
+7.	Create a string called username assign to the request method.
+8.	Set the username as “” if username is null.
+9.	Set the cookie as new cookie (“ username”,username) and call a function cookie.setmaxage(365*24*60*60)
+10.	Then call the function response.addcookie (cookie).
+11.	Create a link as next page to view the cookie value
+12.	To create showcookievalue.jsp set the language as java
+13.	Create an array cookie[] and a string cookiename
+14.	Set cookie[] equals request.getcookie() function.
+15.	If cookie is not equal to null do the next step.
+16.	Use a for loop to find cookie length and cookie name
+17.	Then check using if statement  my cookie as null.
+18.	If it is true type as no cookie found with the name.
+19.	Else type as welcome my cookie.getvalue.
+20.	Save the file using .jsp extention in  C:\Program Files\ApacheSoftwareFoundation\tomcat 5.0\webapps\Root\user directory\    .jsp 
+21.	Open internet explorer and in address bar type http:// localhost : 8080/user directory/filename  to Execute the program.
+22.	Stop.
+
+
+PROGRAM
+
+Cookie.jsp
+
+<%@page language="java"%>
+<html>
+<head>
+<title>cookie input form</title>
+</head>
+<body>
+<form method="get"action="setcookie.jsp">
+<p><b>Enter your name:</b>
+<input type="text"name="username"><br>
+<input type="submit"name="submit"value="submit">
+</form>
+</body>
+</html>
+Setcookie.jsp
+<%@page language="java"%>
+<%
+String username=request.getParameter("username");
+if(username==null)username=" ";
+Cookie cookie=new Cookie("username",username);
+cookie.setMaxAge(60*60);
+response.addCookie(cookie);
+%>
+<html>
+<head>
+<title>Cookie saved</title>
+</head>
+<body>
+<p>
+<a href="showcookievalue.jsp">Click her to see the cookie value</a>
+</p>
+</body>
+</html>
+Showcookievalue.jsp
+<%@page language="java"%>
+<%
+String cookieName="username";
+Cookie cookies[]=request.getCookies();
+Cookie mycookie=null;
+if(cookies!=null)
+{
+for(int i=0;i<cookies.length;i++)
+{
+if(cookies[i].getName().equals(cookieName))
+{
+mycookie=cookies[i];
+break;
+}
+}
+}
+%>
+<html>
+<head>
+<title>show saved cookie</title>
+</head>
+<body>
+<%
+if(mycookie==null)
+{
+%>
+no cookie found with the name<%=cookieName%>
+<%
+}
+else
+{
+%>
+<p>welcome:<%=mycookie.getValue()%>
+<%
+}
+%>
+</body></html>
+
+OUTPUT
+
+ 
+
+ 
+
+ 
+
+
+
+
+RESULT
+
+
+	Thus the program is executed and output is verified.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+EX.NO.13.            
+UPLOADING DATA FROM CLIENT SIDE
+AIM:
+
+	To write a jsp code to upload data from client side.
+
+PROCEDURE:
+
+•	Click the start button and select the program --accessories    --    notepad	
+•	Include the html tags wherever necessary.
+•	Create a form using form tag and set action as formaction.jsp.
+•	Using input tag set the type as file and create a submit button.
+•	To upload the files from client side use request.getparameter(file).
+•	Save the file using .jsp extention in  
+C:\Program Files\ApacheSoftwareFoundation\tomcat5.0\webapps\Root\userdirectory\    .jsp.
+•	Open internet explorer and in address bar type http:// localhost : 8080/user directory/filename  to Execute the program
+•	Print the output.
+
+PROGRAM
+
+FORMACTION.JSP
+<html>
+<head>
+<title>Uploading files</title>
+</head>
+<body>
+<h1>Uploading files</h1>
+file name:
+<%=request.getParameter("filer")%>
+</body>
+</html>
+
+
+
+UPLOAD.JSP
+<html>
+<head>
+<title>Uploading files</title>
+</head>
+<body>
+<FORM ACTION="formaction.jsp"METHOD="POST">
+<input type="file"name="filer"><br>
+<input type="submit"value="submit">
+</form>
+</body>
+</html>
+
+OUTPUT
+
+ 
+
+
+
+ 
+
+
+
+
+
+
+
+RESULT
+
+	Thus the program is executed and output is verified.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+EX.NO.14
+COUNT THE VISITORS USING APPLICATION OBJECT
+AIM:
+
+To write a program to check how many users have visited a website and use application object.
+
+PROCEDURE:
+
+•	Click the start button and select the program --accessories    --    notepad
+•	Include the html tags wherever necessary.
+•	Create a variable counter and assign as null.
+•	Create a string heading and assign as null.
+•	Check the counter value using if statement.
+•	If it is null set counter as integer (1).
+•	Else increment counter value by 1.
+•	Set the checked values in session object.
+•	If it is counted. Print you have visited the website that much times.
+•	Save the file and execute.
+•	Stop.
+
+PROGRAM
+<html>
+<head>
+<title>Using the Application Object</title>
+</head>
+<body bgcolor=bisque>
+<h1>Using the Application Object</h1>
+<%
+// -- Session object –
+Integer count = (Integer)session.getAttribute("count");
+if (count==null)
+count=new Integer(1);
+else
+count=new Integer(count.intValue()+1);
+session.setAttribute("count",count);
+// -- Application object --
+Integer appcount=(Integer)application.getAttribute("appcount");
+if (appcount==null)
+appcount=new Integer(1);
+else
+appcount=new Integer(appcount.intValue()+1);
+application.setAttribute("appcount",appcount);
+%>
+You have visit the page <%=count%> times.<br>
+This page visited by all users <%=appcount%> times.
+</body>
+</html>
+
+OUTPUT
+
+ 
+
+Result:
+
+	Thus the above program was successfully executed and then output was
+Verified.
+
+
+
+
+EX.NO.15
+
+LINK COUNTER USING JAVASCRIPT
+AIM:
+
+	To write a Code in Java Script to count number of times you move over a link.
+
+PROCEDURE:
+1.	 Click the Start button and select the program --accessories    --    notepad.
+2.	Include the necessary html tags and mention the language as JavaScript.
+3.	Declare a variable p and assign as 0.
+4.	Define a function a().
+5.	In function a() , increment the value by 1.
+6.	Display the count on the status bar.
+7.	Create a necessary html document for the link.
+8.	Stop.
+9.	
+PROGRAM:
+
+Count.html:
+
+<html>
+<head>
+<title>Count</title>	</head>
+<script>
+var p=0;
+function a()
+{
+p=p+1
+window.status=p;
+}
+</script>	</head>
+<body>
+<a href=sample.html" onmouseover="a()">
+See the status bar</a>
+</body></html>
+
+
+
+OUTPUT:
+
+
+ 
+
+
+
+
+
+
+
+RESULT:
+
+	Thus the above program was successfully executed and then output was verified.
+
+
+
+
+
+
+
+
+
+
+
